@@ -1,5 +1,6 @@
 <body>
 
+  <div><button>Draw</button></div>
   <textarea rows="20" cols="255">A->B: Message</textarea>
   <div id="diagram"></div>
 
@@ -10,10 +11,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
 
   <script type="text/javascript">
-    
-    $(document).ready(function () {
+
+    function draw() {
+      $('svg').remove();
       var diagram = Diagram.parse($('textarea').val());
       diagram.drawSVG('diagram');
+    }
+
+    $(document).ready(function () {
+      draw();
+    });
+
+    $('button').click(function () {
+      draw();
     });
     
   </script>
